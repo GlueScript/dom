@@ -13,8 +13,7 @@ RUN apt-get update -qq && \
 RUN mkdir /home/app 
 
 # Move files into place
-COPY src/index.js /home/app/index.js
-COPY src/package.json /home/app/package.json
+COPY src/ /home/app/
 
 # Install dependencies
 WORKDIR /home/app
