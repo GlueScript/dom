@@ -3,8 +3,6 @@ var app = require('express')(),
 
 app.use(bodyParser.text({type : 'text/html'}))
 app.use(bodyParser.json())
-// curl sends urlencoded bodies
-app.use(bodyParser.urlencoded({extended : true}))
 
 // use env.PORT if set
 var PORT = 8780;
@@ -15,14 +13,15 @@ app.get('/', function (req, res) {
 });
 
 app.post('/', function(req, res) {
-    console.log('incoming post request: '+ req.body)
-    console.log('incoming post params: '+ req.param('f'))
 
     // get filter from query string
     var filter = req.param('f')
 
     // get document from request body
     var doc = req.body
+
+    console.log('incoming post request: '+ doc)
+    console.log('incoming post params: '+ filter)
 
     // invoke business logic using doc and filter
 
