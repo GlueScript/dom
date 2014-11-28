@@ -8,6 +8,7 @@
   },
   "author": "Tim Rodger tim.rodger@gmail.com",
   "dependencies": {
-    "express": "~4.10.4"
+    "express": "~4.10.4",
+    "xpath": "0.0.7"
   }
 }
