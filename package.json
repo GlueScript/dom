@@ -1,0 +1,13 @@
+{
+  "name": "DOM",
+  "version": "0.0.0",
+  "description": "Extracts items from a DOM document",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tim Rodger tim.rodger@gmail.com",
+  "dependencies": {
+    "express": "~4.10.4"
+  }
+}
