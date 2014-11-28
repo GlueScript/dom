@@ -8,5 +8,12 @@ app.get('/', function (req, res) {
     res.send('DOM: post a document with a filter query to extract the specified items.');
 });
 
+app.post('/', function(req, res) {
+    // get filter from query string
+    // get document from request body
+    // invoke business logic
+    // respond with json array of 0+ items
+});
+
 app.listen(PORT);
 console.log('Running on http://localhost:' + PORT);
