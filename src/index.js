@@ -1,8 +1,10 @@
 var app = require('express')(),
-    bodyParser = require('body-parser')
+    bodyParser = require('body-parser'),
+    extract = require('./lib/extract');
 
-app.use(bodyParser.text({type : 'text/html'}))
-app.use(bodyParser.json())
+app.use(bodyParser.text({type : 'text/*'}));
+app.use(bodyParser.text({type : 'application/xml'}));
+app.use(bodyParser.json());
 
 // use env.PORT if set
 var PORT = 8780;
@@ -15,19 +17,17 @@ app.get('/', function (req, res) {
 app.post('/', function(req, res) {
 
     // get filter from query string
-    var filter = req.param('f')
+    var filter = req.param('f');
 
     // get document from request body
-    var doc = req.body
-
-    console.log('incoming post request: '+ doc)
-    console.log('incoming post params: '+ filter)
+    var doc = req.body;
 
     // invoke business logic using doc and filter
+    var result = extract.filter(doc, filter);
 
     // respond with json array of 0+ items
-    res.setHeader('Content-Type', 'application/json')
-    res.send(doc)
+    res.setHeader('Content-Type', 'application/json');
+    res.send(result);
 });
 
 app.listen(PORT);
