@@ -10,6 +10,7 @@
   "dependencies": {
     "express": "~4.10.4",
     "xpath": "0.0.7",
-    "xmldom": "~0.1.19"
+    "xmldom": "~0.1.19",
+    "body-parser": "~1.9.3"
   }
 }
