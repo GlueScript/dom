@@ -1,29 +1,26 @@
 var app = require('express')(),
     bodyParser = require('body-parser'),
-    extract = require('./lib/extract');
+    filter = require('./lib/filter');
 
 app.use(bodyParser.text({type : 'text/*'}));
 app.use(bodyParser.text({type : 'application/xml'}));
-app.use(bodyParser.json());
+// app.use(bodyParser.json());
 
 // use env.PORT if set
 var PORT = 8780;
 
 // App
 app.get('/', function (req, res) {
-    res.send('DOM: post a document with a filter query to extract the specified items.');
+    res.json({"description":"DOM - post a document with a filter query (f=@html) to extract the specified items"});
 });
 
 app.post('/', function(req, res) {
-
-    // get filter from query string
-    var filter = req.param('f');
-
+    // validation? let the filter module do that?
+    
     // get document from request body
-    var doc = req.body;
-
+    // get filter from query string
     // invoke business logic using doc and filter
-    var result = extract.filter(doc, filter);
+    var result = filter.extract(req.body, req.param('f'));
 
     // respond with json array of 0+ items
     res.setHeader('Content-Type', 'application/json');
