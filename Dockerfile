@@ -7,6 +7,7 @@ EXPOSE 8780
 # Install dependencies
 RUN apt-get update -qq && \
     apt-get -y install \
+    node \
     npm
 
 # Make the directories
