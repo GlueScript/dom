@@ -10,7 +10,7 @@ var PORT = 8780;
 
 // App
 app.get('/', function (req, res) {
-    res.json({"description":"DOM - post a document with a filter query (f=@html) to extract the specified items"});
+    res.json({"description":"DOM - post a document with an xpath filter query (f=//a/@html) to extract the specified items"});
 });
 
 app.post('/', function(req, res) {
