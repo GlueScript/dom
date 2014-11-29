@@ -13,7 +13,7 @@ exports.extract = function(input, filter) {
     // construct xpath - assume filter is an xpath
     var nodes = xpath.select(filter, doc);
     var items = [];
-    nodes.forEach(function(i){
+    nodes.forEach(function(i) {
         // works for elements and attributes
         if (i.firstChild){
             items.push(i.firstChild.toString());
