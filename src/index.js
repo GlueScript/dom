@@ -2,9 +2,8 @@ var app = require('express')(),
     bodyParser = require('body-parser'),
     filter = require('./lib/filter');
 
-app.use(bodyParser.text({type : 'text/*'}));
+app.use(bodyParser.text({type : 'text/*', limit: '1024kb'}));
 app.use(bodyParser.text({type : 'application/xml'}));
-// app.use(bodyParser.json());
 
 // use env.PORT if set
 var PORT = 8780;
@@ -28,4 +27,5 @@ app.post('/', function(req, res) {
 });
 
 app.listen(PORT);
+
 console.log('Running on http://localhost:' + PORT);
