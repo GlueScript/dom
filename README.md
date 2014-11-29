@@ -1,7 +1,7 @@
 dom
 ===
 
-Node service to work on DOM documents using xpath
+Node service to work on DOM documents using xpath. Post your document with the correct Content-Type header and a filter param containing an xpath.
 
 Usage:
 
