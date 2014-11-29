@@ -7,15 +7,19 @@ var xpath = require('xpath'),
  * allow filtering for elements or attributes
  */
 exports.extract = function(input, filter) {
-    console.log('filter: ' + input + ' : ' + filter);
 
     var doc = new parser().parseFromString(input);
+
     // construct xpath - assume filter is an xpath
     var nodes = xpath.select(filter, doc);
     var items = [];
     nodes.forEach(function(i){
-        // works for elements
-        items.push(i.firstChild.data); 
+        // works for elements and attributes
+        if (i.firstChild){
+            items.push(i.firstChild.toString());
+        } else {
+            items.push(i.value);
+        }
     });
     return items;
 };
