@@ -18,6 +18,6 @@ WORKDIR /home/app
 
 RUN npm install
 
-EXPOSE 8780
+EXPOSE 80
 
 CMD ["nodejs", "/home/app/index.js"]
