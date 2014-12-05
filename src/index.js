@@ -17,7 +17,7 @@ app.post('/', function(req, res) {
 });
 
 // use env.PORT if set
-var PORT = process.env.PORT || 8780;
+var PORT = process.env.PORT || 80;
 
 app.listen(PORT);
 
