@@ -9,6 +9,9 @@ var xpath = require('xpath'),
 exports.extract = function(input, filter, callback) {
 
     var items = [];
+    if ('' == filter) {
+        console.log('empty xpath filter');
+    }
     // construct xpath - assume filter is an xpath
     try {
         var doc = new parser().parseFromString(input);
