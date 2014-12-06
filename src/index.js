@@ -34,4 +34,4 @@ var PORT = process.env.PORT || 80;
 
 app.listen(PORT);
 
-logger.log('Running on http://localhost:' + PORT);
+logger.log('Running dom on http://localhost:' + PORT);
