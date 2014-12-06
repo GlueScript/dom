@@ -18,15 +18,15 @@ var logger = new winston.Logger({
 app.use(bodyParser.text({type : 'text/*', limit: '1024kb'}));
 app.use(bodyParser.text({type : 'application/xml'}));
 
-// App
 app.get('/', function (req, res) {
     res.json({"description":"DOM - post a document with an xpath filter query (xpath=//a/@href) to extract the specified items"});
 });
 
 app.post('/', function(req, res) {
     // validation? let the filter module do that?
-    var result = filter.extract(req.body, req.param('xpath'));
-    res.json(result);
+    var result = filter.extract(req.body, req.param('xpath'), function(result){
+        res.json(result);
+    });
 });
 
 // use env.PORT if set

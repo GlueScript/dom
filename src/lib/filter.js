@@ -6,10 +6,9 @@ var xpath = require('xpath'),
  * return an array of raw items 
  * allow filtering for elements or attributes
  */
-exports.extract = function(input, filter) {
+exports.extract = function(input, filter, callback) {
 
     var items = [];
-
     // construct xpath - assume filter is an xpath
     try {
         var doc = new parser().parseFromString(input);
@@ -25,6 +24,5 @@ exports.extract = function(input, filter) {
     } catch (e){
         console.log(e);
     }
-
-    return items;
+    callback(items);
 };
