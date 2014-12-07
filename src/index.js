@@ -24,14 +24,11 @@ app.get('/', function (req, res) {
 
 app.post('/', function(req, res) {
     // validation? let the filter module do that?
-    var result = filter.extract(req.body, req.param('xpath'), function(result){
+    filter.extract(req.body, req.param('xpath'), function(result){
         res.json(result);
     });
 });
 
-// use env.PORT if set
 var PORT = process.env.PORT || 80;
-
 app.listen(PORT);
-
 logger.log('Running dom on http://localhost:' + PORT);
