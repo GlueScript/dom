@@ -24,7 +24,7 @@ app.get('/', function (req, res) {
 
 app.post('/', function(req, res) {
     // validation? let the filter module do that?
-    filter.extract(req.body, req.param('xpath'), function(result){
+    filter.extract(req.body, req.param('xpath'), function(result) {
         res.json(result);
     });
 });
