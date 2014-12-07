@@ -1,9 +1,12 @@
 {
   "name": "DOM",
-  "version": "0.2.0",
+  "version": "0.2.2",
   "description": "Extracts items from a DOM document",
   "main": "index.js",
-  "respository": "git@github.com:timothy-r/dom.git",
+  "repository": {
+    "type" : "git",
+    "url" : "git@github.com:timothy-r/dom.git"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
