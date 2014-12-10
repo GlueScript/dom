@@ -28,6 +28,22 @@ describe('filter', function() {
                 assert.equal('blah.html', result[0]);
             });
         });
+        it('should return an empty array when no DOM document is supplied', function() {
+            var input = 'not a document';
+            var xpath = '//a/@href';
+            var result = filter.extract(input, xpath, function(result){
+                assert(result instanceof Array);
+                assert.equal(0, result.length);
+            });
+        });
+        it('should return an empty array when an invalid DOM document is supplied', function() {
+            var input = '<? xml version="1.0" encoding="UTF-8" ?><doc><element name="dopy</doc>';
+            var xpath = '//a/@href';
+            var result = filter.extract(input, xpath, function(result){
+                assert(result instanceof Array);
+                assert.equal(0, result.length);
+            });
+        });
     });
 });
 
