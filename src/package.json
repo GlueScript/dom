@@ -8,7 +8,7 @@
     "url" : "git@github.com:timothy-r/dom.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/mocha/bin/mocha ../test"
   },
   "author": "Tim Rodger tim.rodger@gmail.com",
   "dependencies": {
@@ -17,5 +17,9 @@
     "xmldom": "~0.1.19",
     "body-parser": "~1.9.3",
     "winston": "~0.8.3"
+  },
+  "devDependencies": {
+    "should": "~4.3.0",
+    "mocha": "~2.0.1"
   }
 }
