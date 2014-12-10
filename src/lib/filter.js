@@ -2,9 +2,9 @@ var xpath = require('xpath'),
     parser = require('xmldom').DOMParser;
 
 /*
- * extract items from input (a dom html/xml document) using filter parameter
- * return an array of raw items 
- * allow filtering for elements or attributes
+ * extracts items from input (a dom html/xml document) using filter parameter
+ * returns an array of raw string items 
+ * allows filtering for elements or attributes
  */
 exports.extract = function(input, filter, callback) {
 
