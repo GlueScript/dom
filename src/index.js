@@ -31,4 +31,4 @@ app.post('/', function(req, res) {
 
 var PORT = process.env.PORT || 80;
 app.listen(PORT);
-logger.log('Running dom on http://localhost:' + PORT);
+logger.log('info', 'Running dom service on http://localhost:' + PORT);
