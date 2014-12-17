@@ -16,16 +16,23 @@ var logger = new winston.Logger({
 });
 
 app.use(bodyParser.text({type : 'text/*', limit: '1024kb'}));
-app.use(bodyParser.text({type : 'application/xml'}));
+app.use(bodyParser.text({type : 'application/xml', limit: '1024kb'}));
 
 app.get('/', function (req, res) {
-    res.json({"description":"DOM - post a document with an xpath filter query (xpath=//a/@href) to extract the specified items"});
+    res.json({
+        name : 'dom',
+        description : "Post a document with an xpath filter query (xpath=//a/@href) to extract the specified items"
+    });
 });
 
 app.post('/', function(req, res) {
-    // validation? let the filter module do that?
-    filter.extract(req.body, req.param('xpath'), function(result) {
-        res.json(result);
+    filter.extract(req.body, req.param('xpath'), function(err, result) {
+        if (!err){
+            res.json(result);
+        } else {
+            console.log(err);
+            res.status(400).json(result);
+        }
     });
 });
 

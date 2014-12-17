@@ -12,7 +12,7 @@ exports.extract = function(input, filter, callback) {
     
     // construct xpath - assume filter is an xpath
     try {
-        // pass in stub error callbacks to suppress error logging
+        // pass in stub error callbacks to suppress error logging due to parse errors
         var doc = new DOMParser({
             locator: {},
             errorHandler: {
@@ -30,8 +30,10 @@ exports.extract = function(input, filter, callback) {
                 items.push(i.value);
             }
         });
+        callback(null, items);
+
     } catch (e){
-        console.log(e);
+        // send the error back to caller
+        callback(e, items);
     }
-    callback(items);
 };
