@@ -7,4 +7,4 @@ Usage:
 
   curl -X POST -d @web-page.html -H 'Content-Type: text/html' 'http://dom.service/?xpath=//a/@href'
 
-This will respond with a json array of the href attribute elements contained by the document.
+This will respond with a json array of the href attributes of anchor contained by the document.
