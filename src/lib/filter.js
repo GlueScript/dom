@@ -1,5 +1,5 @@
 var xpath = require('xpath'),
-    parser = require('xmldom').DOMParser;
+    DOMParser = require('xmldom').DOMParser;
 
 /*
  * extracts items from input (a dom html/xml document) using filter parameter
@@ -12,7 +12,15 @@ exports.extract = function(input, filter, callback) {
     
     // construct xpath - assume filter is an xpath
     try {
-        var doc = new parser().parseFromString(input);
+        // pass in stub error callbacks to suppress error logging
+        var doc = new DOMParser({
+            locator: {},
+            errorHandler: {
+                error: function(){},
+                fatalError: function(){}
+            }
+        }).parseFromString(input);
+
         var nodes = xpath.select(filter, doc);
         nodes.forEach(function(i) {
             // works for elements and attributes
