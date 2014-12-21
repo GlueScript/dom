@@ -1,5 +1,6 @@
 var xpath = require('xpath'),
-    DOMParser = require('xmldom').DOMParser;
+    DOMParser = require('xmldom').DOMParser,
+    _ = require('underscore');
 
 /*
  * extracts items from input (a dom html/xml document) using filter parameter
@@ -9,27 +10,29 @@ var xpath = require('xpath'),
 exports.extract = function(input, filter, callback) {
 
     var items = [];
-    
-    // construct xpath - assume filter is an xpath
-    try {
-        // pass in stub error callbacks to suppress error logging due to parse errors
-        var doc = new DOMParser({
-            locator: {},
-            errorHandler: {
-                error: function(){},
-                fatalError: function(){}
-            }
-        }).parseFromString(input);
+    input = _.isArray(input) ? input : [input];
 
-        var nodes = xpath.select(filter, doc);
-        nodes.forEach(function(i) {
-            // works for elements and attributes
-            if (i.firstChild){
-                items.push(i.firstChild.toString());
-            } else {
-                items.push(i.value);
-            }
+    try {
+        _.each(input, function(input_doc) {
+            // pass in stub error callbacks to suppress error logging due to parse errors
+            var document = new DOMParser({
+                locator: {},
+                errorHandler: {
+                    error: function(){},
+                    fatalError: function(){}
+                }
+            }).parseFromString(input_doc);
+
+            _.each(xpath.select(filter, document), function(node) {
+                // works for elements and attributes
+                if (node.firstChild){
+                    items.push(node.firstChild.toString());
+                } else {
+                    items.push(node.value);
+                }
+            });
         });
+
         callback(null, items);
 
     } catch (e){

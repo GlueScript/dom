@@ -17,6 +17,7 @@ var logger = new winston.Logger({
 
 app.use(bodyParser.text({type : 'text/*', limit: '1024kb'}));
 app.use(bodyParser.text({type : 'application/xml', limit: '1024kb'}));
+app.use(bodyParser.json({limit: '1024kb'}));
 
 app.get('/', function (req, res) {
     res.json({
