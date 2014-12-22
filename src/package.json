@@ -1,6 +1,6 @@
 {
   "name": "DOM",
-  "version": "0.2.2",
+  "version": "0.4.0",
   "description": "Extracts items from a DOM document",
   "main": "index.js",
   "repository": {
