@@ -31,7 +31,7 @@ app.post('/', function(req, res) {
         if (!err){
             res.json(result);
         } else {
-            console.log(err);
+            logger.log('error', err);
             res.status(400).json(result);
         }
     });
